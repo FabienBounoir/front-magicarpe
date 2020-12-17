@@ -1,0 +1,32 @@
+{
+    "widgets": {
+        "twitter": {
+            "title": "Twitter",
+            "color": "#00acee"
+        },
+        "weather": {
+            "title": "Weather",
+            "color": "#ea6e4b"
+        },
+        "twitch": {
+            "title": "Twitch",
+            "color": "#6441a5"
+        },
+        "instagram": {
+            "title": "Instagram",
+            "color": "linear-gradient(45deg, #ffca00, #db00ab)"
+        },
+        "youtube": {
+            "title": "Youtube",
+            "color": "#c4302b"
+        },
+        "steam": {
+            "title": "Steam",
+            "color": "linear-gradient(185deg, #171a21, #2a475e, #1b2838, #66c0f4 )"
+        },
+        "covid": {
+            "title": "Covid",
+            "color": "#E74C3C"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.twitchDonnee {
+	display: grid;
+	grid-template-columns: 105px 1fr;
+	/* grid-template-rows: auto; */
+	grid-template-areas: 
+	"logo info";
+	vertical-align: middle;
+}
+
+.logoTwitch{
+	grid-area: logo;
+}
+
+.infoTwitch{
+	grid-area: info;
+}

@@ -1,0 +1,16 @@
+.WeatherDonnee {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	/* grid-template-rows: auto; */
+	grid-template-areas: 
+	"info visuel";
+	text-align: center;
+}
+
+.WeatherInfo{
+	grid-area: info;
+}
+
+.WeatherVisuel{
+	grid-area: visuel;
+}

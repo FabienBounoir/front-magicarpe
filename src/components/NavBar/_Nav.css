@@ -1,0 +1,39 @@
+header, nav, footer, section, article, aside {
+	position: relative;
+	background-color: #343a40;
+	box-sizing: border-box;
+}
+
+nav{
+	display: grid;
+	grid-template-areas: 
+	"text bouton";
+	grid-template-columns: 3fr 0.3fr;
+}
+
+header {
+	border: 3px solid #343a40;
+	height: 2%;
+	color: white;
+	border-bottom-right-radius: 0.5em ;
+	border-bottom-left-radius: 0.5em ;
+	padding: 0.3em 0.2em;
+	/*Ajoutez les propriétés nécessaires ici*/
+}
+
+ul#menu li {
+	display: inline;
+	grid-area: text;
+	margin: 0px;
+}
+
+ul {
+	display: inline;
+	grid-area: text;
+	margin: 0px;
+}
+
+#connexion{
+	grid-area: bouton;
+	height: 30%;
+}

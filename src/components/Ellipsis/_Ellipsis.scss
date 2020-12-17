@@ -1,0 +1,65 @@
+.ellipsis {
+	position: absolute;
+	right: 0.5em;
+	top: 0.5em;
+
+	&__button {
+		cursor: pointer;
+	}
+
+	&__container {
+		overflow: hidden;
+		position: absolute;
+		background-color: white;
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+		border-radius: 10px;
+		width: max-content;
+	}
+
+	&__menu {
+		display: grid;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__option {
+		padding: 0.1em 1em;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		cursor: pointer;
+
+		transition-property: fill color;
+		transition-duration: 200ms;
+
+		&:hover {
+			fill: #fff !important;
+			color: #fff !important;
+
+			.ellipsis__hover {
+				width: 100%;
+			}
+		}
+	}
+
+	&__hover {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		transition: width 200ms ease;
+	}
+
+	&__icon {
+		width: 1.3em;
+		margin-left: 1em;
+		z-index: 1;
+	}
+
+	&__label {
+		z-index: 1;
+		margin: 0.6em 0;
+	}
+}
