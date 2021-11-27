@@ -1,61 +1,82 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import  "./_Covid.css"
 
 //token api covid
 const tokenApiCovid = "fb72ebee16msh50b3cee7668bb2bp1bf384jsnd2bad9036ece"
 
 
-export const Covid = () => {
-    return (
-        <div className="covid">
-            <div className="parametreWidgetCovid">
-                <input id="nomPays" type="text" name="name" />
-                <button onClick={changePays}>changer pays</button>
-            </div>
+export const Covid = ({value, updateWidget, index}) => {
+    const [country, setPays] = useState(value || "");
+    const [isActive, setIsActive] = useState(value === "");
+    const [paysInfos, setPaysInfos] = useState({
+        location: "",
+        deaths: "",
+        confirmed: "",
+        recovered: ""
+    });
 
-            <div className="CovidDonnee">
-            </div>
-        </div>
-    )
-}
+    useEffect(() => {
+        if(value) {
+            changePays();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value])
 
 //methode qui fait un call a l'api meteo pour recuperer les information meteorologique.
-function changePays() {
+    async function changePays() {
 
-    let pays = document.getElementById("nomPays").value;
+        let res = await fetch("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total?country=" + value, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": tokenApiCovid,
+            }
+        })
+        .then(response => response.text())
+        .catch(error => console.log('error', error));
 
-    fetch("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total?country=" + pays, {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": tokenApiCovid,
-        }
-    })
-    .then(response => response.text())
-    .then(result => extraireInfoCovid(result))
-    .catch(error => console.log('error', error));
+        extraireInfoCovid(res)
+    }
 
-}
+    //methode qui extrait les donnée de la meteo pour mettre a jour le widget
+    function extraireInfoCovid(covidInfo)
+    {
+        let obj = JSON.parse(covidInfo)
+        // if(obj.cod !== 200) return;
+        setPaysInfos({
+            location: obj.data.location,
+            deaths: obj.data.deaths,
+            confirmed: obj.data.confirmed,
+            recovered: obj.data.recovered
+        })
 
-//methode qui extrait les donnée de la meteo pour mettre a jour le widget
-function extraireInfoCovid(weatherInfo)
-{
-    let obj = JSON.parse(weatherInfo)
+        setIsActive(true);
+        updateWidget(index, )
+        refreshWidget()
+    }
 
-    document.getElementsByClassName("CovidDonnee")[0].innerHTML = `
-    <h1>${obj.data.location}</h1
-    <p>➜ Nombre de morts: ${obj.data.deaths}</p>
-    <p>➜ Nombre de cas totals: ${obj.data.confirmed}</p>
-    <p>➜ Nombre de guérie ${obj.data.recovered}</p>
-    `
+    //methode qui met à jour le widget
+    function refreshWidget()
+    {
+        setTimeout(function(){
+            changePays();
+        },(document.getElementById("timeActualisation").value * 1000))
+    }
 
-    updateWidget()
-}
-
-//methode qui met à jour le widget
-function updateWidget()
-{
-    document.getElementsByClassName("parametreWidgetCovid")[0].style.display = "none";
-
-    setTimeout(function(){
-        changePays();
-    },(document.getElementById("timeActualisation").value * 1000))
+    return (
+        <div className="covid">
+            {!isActive ? (
+            <div className="parametreWidgetCovid">
+                <input id="nomPays" value={country} onChange={(e) => setPays(e.currentTarget.value)} type="text" name="name" />
+                <button onClick={() => updateWidget(index, country, "country")}>Changer pays</button>
+            </div>
+            ) : (
+            <div className="CovidDonnee">
+                <h1 id="playName">{paysInfos.location}</h1>
+                <p>➜ Nombre de morts: {paysInfos.deaths}</p>
+                <p>➜ Nombre de cas totals: {paysInfos.confirmed}</p>
+                <p>➜ Nombre de guérie {paysInfos.recovered}</p>
+            </div>
+            )}
+        </div>
+    )
 }

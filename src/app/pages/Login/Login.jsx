@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Input } from "../../../components/Input/Input";
+import { userContext } from "../../../context/UserContext";
+import { useHistory } from "react-router-dom";
 
 export const Login = () => {
+    let history = useHistory();
+
     const [user, setUser] = useState({
         username: "",
         password: ""
     });
 
+    const { setIsConnected } = useContext(userContext);
+
+    const [error, setError] = useState("");
+
     const handleChange = (prop, value) => {
+        setError("");
         let modifiedUser = {...user};
         modifiedUser[prop] = value;
         setUser(modifiedUser);
@@ -16,37 +25,28 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // let res = await fetch("localhost:8080/api/auth/signup", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        // res = res.json();
-        // console.log(res);
+        let res = await fetch("http://localhost:8080/api/auth/signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .catch(err => console.log(err));
 
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        const raw = JSON.stringify(user);
-
-        const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("http://localhost:8080/api/auth/signin", requestOptions)
-        .then(result => console.log(result.json()))
-        .catch(error => console.log('error', error));
+        if(res && res.accessToken) {
+            localStorage.setItem("token", `${res.tokenType} ${res.accessToken}`);
+            setIsConnected(true);
+            history.push("/board");
+        }
+        else setError("Une erreur est survenue.");
     }
 
     return (
         <form onSubmit={handleSubmit} className="login">
-            <Input value={user.username} onChange={(value) => handleChange("username", value)} placeholder="Username" />
-            <Input value={user.password} onChange={(value) => handleChange("password", value)} placeholder="Password" type="password" />
+            <Input value={user.username} onChange={(value) => handleChange("username", value)} placeholder="Username" error={error} />
+            <Input value={user.password} onChange={(value) => handleChange("password", value)} placeholder="Password" type="password" error={error} />
             <button type="submit">Se connecter</button>
         </form>
     );

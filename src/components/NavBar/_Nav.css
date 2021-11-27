@@ -35,5 +35,64 @@ ul {
 
 #connexion{
 	grid-area: bouton;
-	height: 30%;
+	/* height: 30%; */
+	background-color: #00aa63;
+    Color:white;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-radius: 3px;
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+#register{
+	margin-left: 10px;
+	grid-area: bouton;
+	/* height: 30%; */
+	background-color: #aa0000;
+    Color:white;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-radius: 3px;
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+#accueil{
+	margin-left: 10px;
+	grid-area: bouton;
+	/* height: 30%; */
+	background-color: #1a00aa;
+    Color:white;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-radius: 3px;
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+#deconnexion{
+	margin-left: 10px;
+	grid-area: bouton;
+	/* height: 30%; */
+	background-color: #aa0000;
+    Color:white;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-radius: 3px;
+    cursor: pointer; 
+    text-decoration: none;
+}
+
+#board{
+	margin-left: 10px;
+	grid-area: bouton;
+	/* height: 30%; */
+	background-color: #9600aa;
+    Color:white;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-radius: 3px;
+    cursor: pointer; 
+    text-decoration: none;
 }

@@ -1,0 +1,38 @@
+.videoInfo {
+	display: grid;
+	grid-template-columns: 325px auto;
+	/* grid-template-rows: auto; */
+	grid-template-areas: 
+	"miniature info";
+	vertical-align: middle;
+	padding-bottom: 1%;
+}
+
+.miniatureVideo{
+	grid-area: miniature;
+}
+
+.infoVideo{
+	grid-area: info;
+}
+
+@media (max-width: 720px) {
+	.videoInfo {
+		display: grid;
+		text-align: center;
+		grid-template-columns: 1fr;
+		/* grid-template-rows: auto; */
+		grid-template-areas: 
+		"miniature"
+		"info";
+		text-align: center;
+	}
+	
+	.miniatureVideo{
+		grid-area: miniature;
+	}
+	
+	.infoVideo{
+		grid-area: info;
+	}
+ }

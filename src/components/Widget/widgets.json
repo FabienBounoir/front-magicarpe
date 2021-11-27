@@ -16,8 +16,12 @@
             "title": "Instagram",
             "color": "linear-gradient(45deg, #ffca00, #db00ab)"
         },
-        "youtube": {
-            "title": "Youtube",
+        "youtubechannel": {
+            "title": "Chaine Youtube",
+            "color": "#c4302b"
+        },
+        "youtubetrend": {
+            "title": "Tendance Youtube",
             "color": "#c4302b"
         },
         "steam": {
@@ -27,6 +31,10 @@
         "covid": {
             "title": "Covid",
             "color": "#E74C3C"
+        },
+        "spotify": {
+            "title": "Spotify",
+            "color": "#1DB954"
         }
     }
 }

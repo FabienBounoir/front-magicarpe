@@ -14,3 +14,24 @@
 .WeatherVisuel{
 	grid-area: visuel;
 }
+
+@media (max-width: 450px) {
+	.WeatherDonnee {
+		display: grid;
+		text-align: center;
+		grid-template-columns: 1fr;
+		/* grid-template-rows: auto; */
+		grid-template-areas: 
+		"info"
+		"visuel";
+		text-align: center;
+	}
+	
+	.WeatherInfo{
+		grid-area: info;
+	}
+	
+	.WeatherVisuel{
+		grid-area: visuel;
+	}
+ }

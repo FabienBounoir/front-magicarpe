@@ -87,7 +87,21 @@ body {
   margin: 0.6em 0;
 }
 
-.widget{
-  padding: 10px;
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999999;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.modal__content {
+  padding: 2em 1.5em;
+  border-radius: 2em;
+  background-color: white;
+}

@@ -14,8 +14,19 @@ export const Register = () => {
         setNewUser(modifiedUser);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
+        await fetch("http://localhost:8080/api/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+
+        
     }
 
     return (

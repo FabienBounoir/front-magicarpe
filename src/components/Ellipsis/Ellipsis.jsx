@@ -3,22 +3,9 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { Icons } from "../Icons/Icons";
 
-export const Ellipsis = ({ color }) => {
+export const Ellipsis = ({ color, options }) => {
     const [isVisible, setIsVisible] = useState(false);
     const defaultColor = "#000000";
-    const options = [
-        {
-            color: color,
-            label: "Modifier",
-            action: () => {console.log(document)}
-        },
-        {
-            color: "#F04B4B",
-            label: "Supprimer",
-            action: () => {},
-            icon: "bin"
-        }
-    ]
 
     return (
         <div className="ellipsis" onClick={() => setIsVisible(!isVisible)} >

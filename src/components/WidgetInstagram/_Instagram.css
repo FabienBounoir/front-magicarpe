@@ -1,0 +1,25 @@
+.btnLoginInsta {
+	color: #fff;
+	background: linear-gradient(45deg, #ffca00, #db00ab);
+	border-radius: 500px;
+	padding: 16px 48px 18px;
+	text-decoration: none;
+
+}
+
+@media (max-width: 750px) {
+	.btnLoginInsta {
+		color: #fff;
+		background: linear-gradient(45deg, #ffca00, #db00ab);
+		border-radius: 500px;
+		padding: 10px 38px 10px;
+		text-decoration: none;
+	}
+}
+
+@media (max-width: 500px) {
+	#boutonInsta{
+		text-align: center;
+	}
+
+}

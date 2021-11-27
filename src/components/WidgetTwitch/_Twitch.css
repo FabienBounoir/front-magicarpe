@@ -1,4 +1,4 @@
-.twitchDonnee {
+.twitchChaineEnLigne {
 	display: grid;
 	grid-template-columns: 105px 1fr;
 	/* grid-template-rows: auto; */
@@ -7,6 +7,16 @@
 	vertical-align: middle;
 }
 
+.twitchChaineHorsLigne {
+	display: grid;
+	grid-template-columns: 105px 1fr;
+	/* grid-template-rows: auto; */
+	grid-template-areas: 
+	"logo info";
+	vertical-align: middle;
+}
+
+
 .logoTwitch{
 	grid-area: logo;
 }
@@ -14,3 +24,33 @@
 .infoTwitch{
 	grid-area: info;
 }
+
+@media (max-width: 450px) {
+	.twitchChaineEnLigne {
+		display: grid;
+		text-align: center;
+		grid-template-columns: 105px 1fr;
+		/* grid-template-rows: auto; */
+		grid-template-areas: 
+		"logo info";
+		vertical-align: middle;
+	}
+	
+	.twitchChaineHorsLigne {
+		display: grid;
+		text-align: center;
+		grid-template-columns: 105px 1fr;
+		/* grid-template-rows: auto; */
+		grid-template-areas: 
+		"logo info";
+		vertical-align: middle;
+	}
+
+	.logoTwitch{
+		grid-area: logo;
+	}
+	
+	.infoTwitch{
+		grid-area: info;
+	}
+ }

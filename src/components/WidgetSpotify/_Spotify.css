@@ -1,0 +1,47 @@
+.playlistInfo {
+	display: grid;
+	grid-template-columns: 155px 1fr;
+	/* grid-template-rows: auto; */
+	grid-template-areas: 
+	"logo info";
+	vertical-align: middle;
+	padding-bottom: 1%;
+}
+
+.logoPlaylist{
+	grid-area: logo;
+}
+
+.infoPlaylist{
+	grid-area: info;
+}
+
+.btnLoginSpotify {
+	color: #fff;
+	background-color: #1ed760;
+	border-radius: 500px;
+	padding: 16px 48px 18px;
+	text-decoration: none;
+
+}
+
+
+
+
+@media (max-width: 750px) {
+	.btnLoginSpotify {
+		color: #fff;
+		background-color: #1ed760;
+		border-radius: 500px;
+		padding: 10px 38px 10px;
+		text-decoration: none;
+	}
+
+}
+
+@media (max-width: 500px) {
+	#boutonSpotify{
+		text-align: center;
+	}
+
+}
